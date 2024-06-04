@@ -31,9 +31,6 @@ public class UsersServiceImpl implements UsersService {
         String openid = jsonObject.getString("openid");
         return openid;
     }
-
-    public void register() {
-        usersMapper.register();
-    }
+    
 
 }

@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
+import org.example.freelance.pojo.User;
 
 @Mapper
 public interface UsersMapper {
@@ -13,5 +14,10 @@ public interface UsersMapper {
     Integer findUser(String openid);
 
 
-    void register();
+
+
+
+
+    @Insert("insert into users(openid) values#{openid}")
+    void insertUser(User user);
 }
