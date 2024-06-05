@@ -12,8 +12,10 @@ import org.example.freelance.exception.AccountNotFoundException;
 import org.example.freelance.exception.PasswordErrorException;
 import org.example.freelance.pojo.Admin;
 import org.example.freelance.pojo.DTO.AdminDTO;
+import org.example.freelance.pojo.DTO.CompanyPageQueryDTO;
 import org.example.freelance.pojo.DTO.UserPageQueryDTO;
 import org.example.freelance.pojo.PageResult;
+import org.example.freelance.pojo.Task;
 import org.example.freelance.pojo.User;
 import org.example.freelance.properties.WeChatProperties;
 import org.example.freelance.utils.HttpClientUtil;
@@ -59,6 +61,15 @@ public class AdminServiceImpl implements AdminService {
 //        int end = page * pageSize;
 //        String search = userPageQueryDTO.getSearch();
 //        List<User> records = adminMapper.page(start, end, search);
+        return new PageResult(total,records);
+    }
+
+    @Override
+    public PageResult CompanypageQuery(CompanyPageQueryDTO companyPageQueryDTO) {
+        PageHelper.startPage(companyPageQueryDTO.getPage(), companyPageQueryDTO.getPageSize());
+        Page<Task> page = adminMapper.CompanypageQuery(companyPageQueryDTO);
+        long total = page.getTotal();
+        List<Task> records = page.getResult();
         return new PageResult(total,records);
     }
 }

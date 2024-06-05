@@ -4,11 +4,17 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.example.freelance.Mapper.UsersMapper;
 import org.example.freelance.Service.UsersService;
+import org.example.freelance.exception.LoginFailedException;
+import org.example.freelance.pojo.DTO.UserDTO;
+import org.example.freelance.pojo.DTO.UserLoginDTO;
+import org.example.freelance.pojo.User;
 import org.example.freelance.properties.WeChatProperties;
 import org.example.freelance.utils.HttpClientUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +37,51 @@ public class UsersServiceImpl implements UsersService {
         String openid = jsonObject.getString("openid");
         return openid;
     }
-    
+
+    @Override
+    public User wxLogin(UserLoginDTO userLoginDTO) {
+        String openid = getOpenid(userLoginDTO.getCode());
+
+        //判断openid是否为空，如果为空表示登录失败，抛出业务异常
+        if(openid == null){
+            throw new LoginFailedException("登录失败");
+        }
+
+        //判断当前用户是否为新用户
+        User user = usersMapper.getByOpenid(openid);
+
+        //如果是新用户，自动完成注册
+        if(user == null){
+            user = User.builder()
+                    .openid(openid)
+                    .createtime(LocalDateTime.now())
+                    .build();
+            usersMapper.insert(user);
+        }
+
+        //返回这个用户对象
+        return user;
+    }
+
+    /**
+     * 更新用户信息
+     * @param userDTO
+     */
+    @Override
+    public void update(UserDTO userDTO) {
+        User user =new User();
+        BeanUtils.copyProperties(userDTO,user);
+        user.setCreatetime(LocalDateTime.now());
+        usersMapper.update(user);
+    }
+
+    @Override
+    public void save(UserDTO userDTO) {
+        User user =new User();
+        BeanUtils.copyProperties(userDTO,user);
+        user.setCreatetime(LocalDateTime.now());
+        usersMapper.insert(user);
+    }
+
 
 }

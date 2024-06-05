@@ -10,14 +10,16 @@ import org.example.freelance.pojo.User;
 @Mapper
 public interface UsersMapper {
 
-    @Select("SELECT COUNT(*) FROM users WHERE openid = #{openid}")
-    Integer findUser(String openid);
+    @Select("SELECT * FROM user WHERE openid = #{openid}")
+    User getByOpenid(String openid);
 
 
+    void insert(User user);
 
 
-
-
-    @Insert("insert into users(openid) values#{openid}")
-    void insertUser(User user);
+    /**
+     * 编辑员工信息
+     * @param user
+     */
+    void update(User user);
 }

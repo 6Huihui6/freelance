@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.freelance.Mapper.UsersMapper">
+
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into user(openid, createtime, name, age, sex, phone, payment, description, address, avatar)
+        values(#{openid}, #{createtime},#{name}, #{age}, #{sex}, #{phone}, #{payment}, #{description}, #{address}, #{avatar})
+
+    </insert>
+    <update id="update">
+        update   user
+        <set>
+            <if test="name!= null ">name = #{name},</if>
+            <if test="age != null ">age = #{age},</if>
+            <if test="sex!= null ">sex = #{sex},</if>
+            <if test="phone!= null ">phone = #{phone},</if>
+            <if test="payment!= null ">payment = #{payment},</if>
+            <if test="description!= null ">description = #{description},</if>
+            <if test="address!= null ">address = #{address},</if>
+            <if test="createtime!= null ">createtime = #{createtime},</if>
+            <if test="avatar!= null ">avatar = #{avatar},</if>
+            <if test="identity != null ">identity = #{identity},</if>
+        </set>
+            where openid = #{openid}
+    </update>
+</mapper>

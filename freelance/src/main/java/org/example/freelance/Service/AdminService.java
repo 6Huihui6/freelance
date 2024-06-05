@@ -2,6 +2,7 @@ package org.example.freelance.Service;
 
 import org.example.freelance.pojo.Admin;
 import org.example.freelance.pojo.DTO.AdminDTO;
+import org.example.freelance.pojo.DTO.CompanyPageQueryDTO;
 import org.example.freelance.pojo.DTO.UserPageQueryDTO;
 import org.example.freelance.pojo.PageResult;
 import org.example.freelance.pojo.User;
@@ -20,4 +21,10 @@ public interface AdminService {
     PageResult pageQuery(UserPageQueryDTO userPageQueryDTO);
 
 
+    /**
+     * 分页查询公司
+     * @param companyPageQueryDTO
+     * @return
+     */
+    PageResult CompanypageQuery(CompanyPageQueryDTO companyPageQueryDTO);
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.freelance.Mapper.AdminMapper">
+
+    <select id="pageQuery" resultType="org.example.freelance.pojo.User">
+        select *  from  user
+        <where>
+            <if test="search!= null and search!= ''">
+                and name like concat('%',#{search},'%')
+                or sex like concat('%',#{search},'%')
+                or credit like concat('%',#{search},'%')
+                or phone like concat('%',#{search},'%')
+                or address like concat('%',#{search},'%')
+                or description like concat('%',#{search},'%')
+                or openid like concat('%',#{search},'%')
+            </if>
+        </where>
+        order by createtime desc
+    </select>
+    <select id="CompanypageQuery" resultType="org.example.freelance.pojo.Task">
+        select *  from  tasks
+        <where>
+            <if test="search!= null and search!= ''">
+                and taskname like concat('%',#{search},'%')
+                or tasktype like concat('%',#{search},'%')
+                or taskpayment like concat('%',#{search},'%')
+                or taskstatus like concat('%',#{search},'%')
+                or phone like concat('%',#{search},'%')
+                or createtime like concat('%',#{search},'%')
+                or endtime like concat('%',#{search},'%')
+                or taskdesc like concat('%',#{search},'%')
+                or location like concat('%',#{search},'%')
+                or taskid like concat('%',#{search},'%')
+            </if>
+        </where>
+        order by createtime desc
+
+    </select>
+</mapper>

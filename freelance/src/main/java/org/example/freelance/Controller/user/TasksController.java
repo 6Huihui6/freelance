@@ -1,4 +1,4 @@
-package org.example.freelance.Controller;
+package org.example.freelance.Controller.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.freelance.Mapper.TasksMapper;
@@ -34,4 +34,7 @@ public class TasksController {
         List<Task> res = tasksMapper.getAll();
         return Result.success(res) ;
     }
+
+
+
 }

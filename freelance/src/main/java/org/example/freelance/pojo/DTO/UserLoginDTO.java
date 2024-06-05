@@ -1,4 +1,4 @@
-package org.example.freelance.pojo.VO;
+package org.example.freelance.pojo.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,9 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginVO implements Serializable {
+public class UserLoginDTO implements Serializable {
 
-    private Long id;
-    private String openid;
+
+    private String code;
 
 }

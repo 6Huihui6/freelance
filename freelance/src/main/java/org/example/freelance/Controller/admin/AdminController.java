@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.freelance.Service.AdminService;
 import org.example.freelance.pojo.Admin;
 import org.example.freelance.pojo.DTO.AdminDTO;
+import org.example.freelance.pojo.DTO.CompanyPageQueryDTO;
 import org.example.freelance.pojo.DTO.UserPageQueryDTO;
 import org.example.freelance.pojo.PageResult;
 import org.example.freelance.pojo.Result;
@@ -45,6 +46,14 @@ public class AdminController {
     public  Result<PageResult>page(UserPageQueryDTO userPageQueryDTO){
         log.info("员工分页查询：{}", userPageQueryDTO.toString());
         PageResult pageResult =adminService.pageQuery(userPageQueryDTO);
+        return Result.success(pageResult);
+    }
+
+    @GetMapping("/company/page")
+    @ApiOperation("员工分页查询")
+    public  Result<PageResult>page(CompanyPageQueryDTO companyPageQueryDTO){
+        log.info("员工分页查询：{}", companyPageQueryDTO.toString());
+        PageResult pageResult =adminService.CompanypageQuery(companyPageQueryDTO);
         return Result.success(pageResult);
     }
 
