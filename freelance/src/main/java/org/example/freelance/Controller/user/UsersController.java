@@ -39,7 +39,7 @@ public class UsersController {
         return Result.success(userLoginVO);
     }
 
-    @PostMapping("/change")
+    @PostMapping("/update")
     @ApiOperation("编辑员工信息")
     public Result update(@RequestBody UserDTO userDTO) {
         log.info("编辑员工信息：{}", userDTO);
@@ -47,7 +47,7 @@ public class UsersController {
         return Result.success();
     }
 
-@PostMapping("/user")
+@PostMapping("/save")
 @ApiOperation("新增员工")
 public  Result save(@RequestBody UserDTO userDTO){
     log.info("新增员工：{}", userDTO);
@@ -64,12 +64,12 @@ public  Result save(@RequestBody UserDTO userDTO){
 //    }
 
 
-//    @DeleteMapping
-//    public  Result delete(@RequestParam List<Long> ids){
-//        log.info("删除人物：{}", ids);
-//        dishService.deleteBatch(ids);
-//        cleanCache("dish_*");
-//        return Result.success();
-//    }
+    @DeleteMapping("delete")
+    @ApiOperation("删除员工")
+    public  Result delete(@RequestParam List<String> selectedIds){
+        log.info("删除人物：{}", selectedIds);
+        usersService.deleteBatch(selectedIds);
+        return Result.success();
+    }
 
 }

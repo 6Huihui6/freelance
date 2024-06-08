@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
 import org.example.freelance.pojo.User;
 
+import java.util.List;
+
 @Mapper
 public interface UsersMapper {
 
@@ -22,4 +24,9 @@ public interface UsersMapper {
      * @param user
      */
     void update(User user);
+
+    /**
+     * 删除员工信息
+     */
+    void deleteBatch(List<String> selectedIds);
 }

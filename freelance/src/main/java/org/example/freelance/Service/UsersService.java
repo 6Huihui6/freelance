@@ -4,6 +4,8 @@ import org.example.freelance.pojo.DTO.UserDTO;
 import org.example.freelance.pojo.DTO.UserLoginDTO;
 import org.example.freelance.pojo.User;
 
+import java.util.List;
+
 public interface UsersService {
     String getOpenid(String code);
 
@@ -26,4 +28,10 @@ public interface UsersService {
      * @param userDTO
      */
     void save(UserDTO userDTO);
+
+    /**
+     * 删除员工
+     * @param selectedIds
+     */
+    void deleteBatch(List<String> selectedIds);
 }
