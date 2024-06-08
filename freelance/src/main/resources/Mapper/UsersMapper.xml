@@ -25,4 +25,8 @@
         </set>
             where openid = #{openid}
     </update>
+    <delete id="deleteBatch">
+        delete from user where openid in
+                <foreach collection="selectedIds" item="openid" separator="," open="(" close=")">#{openid}</foreach>
+    </delete>
 </mapper>

@@ -13,9 +13,11 @@ import org.example.freelance.utils.HttpClientUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -81,6 +83,16 @@ public class UsersServiceImpl implements UsersService {
         BeanUtils.copyProperties(userDTO,user);
         user.setCreatetime(LocalDateTime.now());
         usersMapper.insert(user);
+    }
+
+    /**
+     * 根据id删除
+     * @param selectedIds
+     */
+    @Transactional
+    @Override
+    public void deleteBatch(List<String> selectedIds) {
+        usersMapper.deleteBatch(selectedIds);
     }
 
 

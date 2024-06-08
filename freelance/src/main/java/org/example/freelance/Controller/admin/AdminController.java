@@ -50,7 +50,7 @@ public class AdminController {
     }
 
     @GetMapping("/company/page")
-    @ApiOperation("员工分页查询")
+    @ApiOperation("分页查询")
     public  Result<PageResult>page(CompanyPageQueryDTO companyPageQueryDTO){
         log.info("员工分页查询：{}", companyPageQueryDTO.toString());
         PageResult pageResult =adminService.CompanypageQuery(companyPageQueryDTO);
