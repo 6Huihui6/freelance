@@ -21,4 +21,10 @@ public interface TasksMapper {
      * @param selectedIds
      */
     void deleteBatch(List<String> selectedIds);
+
+    /**
+     * 新增任务
+     * @param task
+     */
+    void insert(Task task);
 }

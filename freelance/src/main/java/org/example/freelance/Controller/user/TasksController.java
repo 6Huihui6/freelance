@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.example.freelance.Mapper.TasksMapper;
 import org.example.freelance.Service.TasksService;
+import org.example.freelance.pojo.DTO.TaskDTO;
+import org.example.freelance.pojo.DTO.UserDTO;
 import org.example.freelance.pojo.Result;
 import org.example.freelance.pojo.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,14 @@ public class TasksController {
     public Result getAll() {
         List<Task> res = tasksMapper.getAll();
         return Result.success(res) ;
+    }
+
+    @PostMapping("/save")
+    @ApiOperation("新增员工")
+    public  Result save(@RequestBody TaskDTO taskDTO){
+        log.info("新增员工：{}", taskDTO);
+        tasksService.save(taskDTO);
+        return Result.success();
     }
 
     @DeleteMapping("delete")

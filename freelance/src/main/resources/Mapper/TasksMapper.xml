@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.example.freelance.Mapper.TasksMapper">
+    <insert id="insert">
+        insert into tasks(taskcompanyid, taskname, taskdesc, tasktype, location, taskpayment, taskstatus,
+                          createtime, endtime, longitude, latitude, phone)values
+            (#{taskcompanyid}, #{taskname}, #{taskdesc}, #{tasktype}, #{location}, #{taskpayment}, #{taskstatus},
+             #{createtime}, #{endtime}, #{longitude}, #{latitude}, #{phone})
+    </insert>
 
     <delete id="deleteBatch">
         delete from tasks where taskid in
