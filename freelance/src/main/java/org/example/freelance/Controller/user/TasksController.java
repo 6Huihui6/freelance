@@ -1,5 +1,6 @@
 package org.example.freelance.Controller.user;
 
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.example.freelance.Mapper.TasksMapper;
 import org.example.freelance.Service.TasksService;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 @Slf4j
 public class TasksController {
 
@@ -35,6 +36,13 @@ public class TasksController {
         return Result.success(res) ;
     }
 
+    @DeleteMapping("delete")
+    @ApiOperation("删除任务")
+    public  Result delete(@RequestParam List<String> selectedIds){
+        log.info("删除任务：{}", selectedIds);
+        tasksService.deleteBatch(selectedIds);
+        return Result.success();
+    }
 
 
 }

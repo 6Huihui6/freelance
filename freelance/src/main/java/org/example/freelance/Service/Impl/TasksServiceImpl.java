@@ -7,6 +7,8 @@ import org.example.freelance.pojo.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @Slf4j
@@ -22,6 +24,10 @@ public class TasksServiceImpl implements TasksService {
         return task;
     }
 
+    @Override
+    public void deleteBatch(List<String> selectedIds) {
+        tasksMapper.deleteBatch(selectedIds);
+    }
 
 
 }

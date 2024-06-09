@@ -10,9 +10,15 @@ import java.util.List;
 public interface TasksMapper {
 
 
-    @Select("select *from tasks where task_Id=#{taskId}")
+    @Select("select *from tasks where taskid=#{taskId}")
     Task getById(Long taskId);
 
     @Select("SELECT * FROM tasks")
     List<Task> getAll();
+
+    /**
+     * 删除任务
+     * @param selectedIds
+     */
+    void deleteBatch(List<String> selectedIds);
 }
