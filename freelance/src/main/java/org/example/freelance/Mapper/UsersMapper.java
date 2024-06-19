@@ -1,13 +1,12 @@
 package org.example.freelance.Mapper;
 
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.example.freelance.pojo.User;
+import org.example.freelance.pojo.VO.SalaryRange;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface UsersMapper {
@@ -29,4 +28,11 @@ public interface UsersMapper {
      * 删除员工信息
      */
     void deleteBatch(List<String> selectedIds);
+
+
+    Integer countByMap(Map map);
+
+
+    List<SalaryRange> getSalaryRangeData();
+
 }

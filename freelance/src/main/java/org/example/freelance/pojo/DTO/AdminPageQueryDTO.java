@@ -5,12 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class CompanyPageQueryDTO implements Serializable {
+public class AdminPageQueryDTO implements Serializable {
 
 
-    private String companyname;
+    private String search;
 
-    private String address;
     //页码
     private int page;
 

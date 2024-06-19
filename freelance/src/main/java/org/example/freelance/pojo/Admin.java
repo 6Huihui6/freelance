@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -16,8 +17,12 @@ import java.io.Serializable;
 public class Admin   {
 
     private Long id;
+    @ApiModelProperty("用户名")
     private String username;
+
+    @ApiModelProperty("密码")
     private String password;
+    private LocalDateTime logintime;
     private String status;
 
 }

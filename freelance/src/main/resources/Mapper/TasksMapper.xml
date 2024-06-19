@@ -8,9 +8,38 @@
             (#{taskcompanyid}, #{taskname}, #{taskdesc}, #{tasktype}, #{location}, #{taskpayment}, #{taskstatus},
              #{createtime}, #{endtime}, #{longitude}, #{latitude}, #{phone})
     </insert>
+    <update id="update">
+        update tasks
+        <set>
+            <if test="taskcompanyid!= null ">taskcompanyid = #{taskcompanyid},</if>
+            <if test="taskname != null ">taskname = #{taskname},</if>
+            <if test="taskdesc!= null ">taskdesc = #{taskdesc},</if>
+            <if test="tasktype!= null ">tasktype = #{tasktype},</if>
+            <if test="location!= null ">location = #{location},</if>
+            <if test="taskpayment!= null ">taskpayment = #{taskpayment},</if>
+            <if test="taskstatus!= null ">taskstatus = #{taskstatus},</if>
+            <if test="createtime!= null ">createtime = #{createtime},</if>
+            <if test="endtime!= null ">endtime = #{endtime},</if>
+            <if test="longitude != null ">longitude = #{longitude},</if>
+            <if test="latitude!= null ">latitude = #{latitude},</if>
+            <if test="phone!= null ">phone = #{phone},</if>
+        </set>
+        where taskid = #{taskid}
+    </update>
 
     <delete id="deleteBatch">
         delete from tasks where taskid in
                 <foreach collection="selectedIds" item="taskid" separator="," open="(" close=")">#{taskid}</foreach>
     </delete>
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(taskid) from tasks
+        <where>
+            <if test="startDate != null">
+                and  createtime &gt; #{startDate}
+            </if>
+            <if test="endDate != null">
+                and  createtime &lt; #{endDate}
+            </if>
+        </where>
+    </select>
 </mapper>

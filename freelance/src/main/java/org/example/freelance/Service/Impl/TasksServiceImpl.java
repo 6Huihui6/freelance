@@ -23,8 +23,8 @@ public class TasksServiceImpl implements TasksService {
 
 
     @Override
-    public Task getById(Long taskId) {
-        Task task= tasksMapper.getById(taskId);
+    public TaskDTO getById(Long taskId) {
+        TaskDTO task= tasksMapper.getById(taskId);
         return task;
     }
 
@@ -41,5 +41,12 @@ public class TasksServiceImpl implements TasksService {
         tasksMapper.insert(task);
     }
 
+    @Override
+    public void update(TaskDTO taskDTO) {
+        Task task= new Task();
+        BeanUtils.copyProperties(taskDTO,task);
+        task.setCreatetime(LocalDateTime.now());
+        tasksMapper.update(task);
+    }
 
 }

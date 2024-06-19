@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.freelance.Mapper.CompaniesMapper">
+
+    <insert id="save">
+        insert into company ( companyname, description, phone, address, createtime)
+        VALUES
+            ( #{companyname}, #{description}, #{phone}, #{address}, #{createtime})
+    </insert>
+    <update id="update">
+        update company
+        <set>
+            <if test="companyname!= null">companyname = #{companyname},</if>
+            <if test="description!= null">description = #{description},</if>
+            <if test="phone!= null">phone = #{phone},</if>
+            <if test="address!= null">address = #{address},</if>
+<!--            <if test="createtime!= null">createtime = #{createtime},</if>-->
+        </set>
+        where companyid = #{companyid}
+    </update>
+    <delete id="deleteBatch">
+        delete from company where companyid in
+        <foreach collection="selectedIds" item="companyid" separator="," open="(" close=")">
+            #{companyid}
+        </foreach>
+    </delete>
+    <select id="countByMap" resultType="java.lang.Integer">
+            select count(companyid) from company
+        <where>
+            <if test="startDate != null">
+                and  createtime &gt; #{startDate}
+            </if>
+            <if test="endDate != null">
+                and  createtime &lt; #{endDate}
+            </if>
+        </where>
+    </select>
+</mapper>

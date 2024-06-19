@@ -26,22 +26,22 @@ public class TasksController {
     private TasksMapper tasksMapper;
 
     @GetMapping("/{taskId}")
-    public Result<Task> getById(@PathVariable("taskId") Long taskId) {
+    public Result<TaskDTO> getById(@PathVariable("taskId") Long taskId) {
         log.info("测试：{}",taskId);
-        Task task = tasksService.getById(taskId);
+        TaskDTO task = tasksService.getById(taskId);
         return Result.success(task);
     }
 
     @GetMapping
     public Result getAll() {
-        List<Task> res = tasksMapper.getAll();
+        List<TaskDTO> res = tasksMapper.getAll();
         return Result.success(res) ;
     }
 
     @PostMapping("/save")
-    @ApiOperation("新增员工")
+    @ApiOperation("新增任务")
     public  Result save(@RequestBody TaskDTO taskDTO){
-        log.info("新增员工：{}", taskDTO);
+        log.info("新增任务：{}", taskDTO);
         tasksService.save(taskDTO);
         return Result.success();
     }
@@ -51,6 +51,14 @@ public class TasksController {
     public  Result delete(@RequestParam List<String> selectedIds){
         log.info("删除任务：{}", selectedIds);
         tasksService.deleteBatch(selectedIds);
+        return Result.success();
+    }
+
+    @PostMapping("/update")
+    @ApiOperation("编辑任务信息")
+    public Result update(@RequestBody TaskDTO taskDTO) {
+        log.info("编辑任务信息：{}", taskDTO);
+        tasksService.update(taskDTO);
         return Result.success();
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface TasksService {
 
 
-    Task getById(Long taskId);
+    TaskDTO getById(Long taskId);
 
     /**
      * 删除任务
@@ -22,4 +22,10 @@ public interface TasksService {
      * @param taskDTO
      */
     void save(TaskDTO taskDTO);
+
+    /**
+     * 更新任务
+     * @param taskDTO
+     */
+    void update(TaskDTO taskDTO);
 }

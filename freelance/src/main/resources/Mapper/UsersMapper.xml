@@ -29,4 +29,37 @@
         delete from user where openid in
                 <foreach collection="selectedIds" item="openid" separator="," open="(" close=")">#{openid}</foreach>
     </delete>
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from user
+        <where>
+            <if test="startDate != null">
+                and  createtime &gt; #{startDate}
+            </if>
+            <if test="endDate != null">
+                and  createtime &lt; #{endDate}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="salaryRangeResult" type="org.example.freelance.pojo.VO.SalaryRange">
+        <result property="salaryRange" column="salary_range"/>
+        <result property="userCout" column="user_count"/>
+    </resultMap>
+
+    <select id="getSalaryRangeData" resultMap="salaryRangeResult">
+        SELECT
+        salary_range,
+        COUNT(*) AS user_count
+        FROM (
+        SELECT
+        CASE
+        WHEN payment &lt; 1000 THEN '低于 1,000'
+        WHEN payment >= 1000 AND payment &lt; 3000 THEN '1,000 - 3,000'
+        WHEN payment >= 3000 AND payment &lt; 5000 THEN '3,000 - 5,000'
+        ELSE '5,000 以上'
+        END AS salary_range
+        FROM user
+        ) AS salary_range_data
+        GROUP BY salary_range;
+    </select>
 </mapper>

@@ -26,6 +26,8 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
+    @Autowired
+    private UsersMapper usersMapper;
 
     @PostMapping("/login")
     public Result<UserLoginVO> login(@RequestBody UserLoginDTO userLoginDTO) {
@@ -38,7 +40,12 @@ public class UsersController {
                 .build();
         return Result.success(userLoginVO);
     }
-
+@GetMapping("/getUser")
+public Result<User> getUser(@RequestParam String openid) {
+        log.info("查询用户：{}", openid);
+    User user = usersMapper.getByOpenid(openid);
+        return Result.success(user);
+    }
     @PostMapping("/update")
     @ApiOperation("编辑员工信息")
     public Result update(@RequestBody UserDTO userDTO) {
