@@ -12,7 +12,7 @@ import java.util.Map;
 public interface TasksMapper {
 
 
-    @Select("select *from tasks where taskid=#{taskId}")
+    @Select("select * from tasks LEFT JOIN freelanceplatform.company ON company.companyid = tasks.taskcompanyid where taskid=#{taskId} ")
     TaskDTO getById(Long taskId);
 
     @Select("SELECT *  FROM tasks LEFT JOIN freelanceplatform.company ON company.companyid = tasks.taskcompanyid")

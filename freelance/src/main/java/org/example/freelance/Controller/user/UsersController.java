@@ -1,6 +1,7 @@
 package org.example.freelance.Controller.user;
 
 
+import io.goeasy.GoEasy;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.example.freelance.Mapper.UsersMapper;
@@ -38,6 +39,12 @@ public class UsersController {
                 .id(user.getId())
                 .openid(user.getOpenid())
                 .build();
+
+        GoEasy goEasy = new GoEasy("http://rest-hangzhou.goeasy.io", "BC-25fd9eb4937f4ee4a886430b46999400");
+
+        //参数：管道标识，发送内容
+        goEasy.publish("客户端", "Hello, GoEasy!");
+
         return Result.success(userLoginVO);
     }
 @GetMapping("/getUser")
