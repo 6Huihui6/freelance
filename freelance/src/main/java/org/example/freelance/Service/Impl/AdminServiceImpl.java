@@ -38,7 +38,7 @@ public class AdminServiceImpl implements AdminService {
             admin = new Admin();
             admin.setStatus("账号不存在");
         }
-        else if (!admin.getPassword().equals(password)) {
+        else if (! admin.getPassword().equals(password)) {
             admin.setStatus("用户名或密码错误");
         } else {
             adminMapper.updateLoginTime(admin.getId(),LocalDateTime.now());
@@ -90,7 +90,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void save(AdminDTO adminDTO) {
-        adminMapper.save(adminDTO);
+
+        adminMapper.save(adminDTO
+        );
     }
 
     @Override

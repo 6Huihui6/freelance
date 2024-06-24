@@ -74,7 +74,7 @@ public class AdminController {
     }
 
     @PostMapping("/save")
-    @ApiOperation("新增员工")
+    @ApiOperation("新增管理员")
     public  Result save(@RequestBody AdminDTO adminDTO){
         log.info("新增员工：{}", adminDTO);
         adminService.save(adminDTO);
