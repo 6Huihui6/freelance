@@ -95,5 +95,9 @@ public class UsersServiceImpl implements UsersService {
         usersMapper.deleteBatch(selectedIds);
     }
 
+    @Override
+    public List<User> getFreelance() {
+        return usersMapper.getFreelance();
+    }
 
 }

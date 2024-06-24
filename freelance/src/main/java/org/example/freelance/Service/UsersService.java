@@ -7,6 +7,9 @@ import org.example.freelance.pojo.User;
 import java.util.List;
 
 public interface UsersService {
+
+    List<User> getFreelance();
+
     String getOpenid(String code);
 
 

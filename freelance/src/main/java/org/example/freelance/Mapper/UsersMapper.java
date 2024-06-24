@@ -35,4 +35,6 @@ public interface UsersMapper {
 
     List<SalaryRange> getSalaryRangeData();
 
+    @Select("SELECT * FROM user WHERE identity = '零工'")
+    List<User> getFreelance();
 }

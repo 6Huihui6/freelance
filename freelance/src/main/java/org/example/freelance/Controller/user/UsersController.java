@@ -69,13 +69,11 @@ public  Result save(@RequestBody UserDTO userDTO){
     return Result.success();
 }
 
-//    @PostMapping("/user")
-//    @ApiOperation("新增员工")
-//    public  Result udate(@RequestBody UserDTO userDTO){
-//        log.info("新增员工：{}", userDTO);
-//        usersService.save(userDTO);
-//        return Result.success();
-//    }
+@GetMapping("/freelance")
+public Result getFreelance() {
+        List<User> freelance = usersService.getFreelance();
+        return Result.success(freelance);
+}
 
 
     @DeleteMapping("delete")
