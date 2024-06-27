@@ -1,10 +1,9 @@
-package org.example.freelance.Mapper;
+package org.example.freelance.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.example.freelance.pojo.Chat;
-import org.example.freelance.pojo.Result;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package org.example.freelance.Service.Impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.example.freelance.Mapper.UsersMapper;
+import org.example.freelance.mapper.UsersMapper;
 import org.example.freelance.Service.UsersService;
 import org.example.freelance.exception.LoginFailedException;
 import org.example.freelance.pojo.DTO.UserDTO;
@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class UsersServiceImpl implements UsersService {

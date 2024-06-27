@@ -1,4 +1,4 @@
-package org.example.freelance.Mapper;
+package org.example.freelance.mapper;
 
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Insert;

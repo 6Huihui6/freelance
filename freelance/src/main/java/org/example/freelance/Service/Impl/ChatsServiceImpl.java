@@ -1,10 +1,9 @@
 package org.example.freelance.Service.Impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.freelance.Mapper.ChatsMapper;
+import org.example.freelance.mapper.ChatsMapper;
 import org.example.freelance.Service.ChatsService;
 import org.example.freelance.pojo.Chat;
-import org.example.freelance.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

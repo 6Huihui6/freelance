@@ -1,10 +1,8 @@
-package org.example.freelance.Mapper;
+package org.example.freelance.mapper;
 
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 import org.example.freelance.pojo.Company;
-import org.example.freelance.pojo.User;
 
 import java.util.List;
 import java.util.Map;

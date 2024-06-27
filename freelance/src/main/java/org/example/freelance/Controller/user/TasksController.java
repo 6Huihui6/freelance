@@ -2,12 +2,10 @@ package org.example.freelance.Controller.user;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.example.freelance.Mapper.TasksMapper;
+import org.example.freelance.mapper.TasksMapper;
 import org.example.freelance.Service.TasksService;
 import org.example.freelance.pojo.DTO.TaskDTO;
-import org.example.freelance.pojo.DTO.UserDTO;
 import org.example.freelance.pojo.Result;
-import org.example.freelance.pojo.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

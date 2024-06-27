@@ -1,4 +1,4 @@
-package org.example.freelance.Mapper;
+package org.example.freelance.mapper;
 
 
 import org.apache.ibatis.annotations.*;
