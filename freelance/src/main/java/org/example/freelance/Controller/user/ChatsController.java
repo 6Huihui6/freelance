@@ -7,7 +7,9 @@ import org.example.freelance.pojo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @Slf4j
@@ -23,6 +25,7 @@ public class ChatsController {
         return Result.success();
     }
 
+    // 获取单个聊天信息
     @GetMapping("/get")
     public Result<List<Chat>> getChat(@RequestParam("openid") String openid,
                                       @RequestParam("channel") String channel) {
@@ -30,5 +33,11 @@ public class ChatsController {
         return Result.success(chats);
     }
 
+    // 获取所有聊天信息
+    @GetMapping("/getAll")
+    public Result getAllChat(@RequestParam("openid") String openid) {
+        HashMap<String, Object> chats = chatsService.getAllChat();
+        return Result.success(chats);
+    }
 
 }

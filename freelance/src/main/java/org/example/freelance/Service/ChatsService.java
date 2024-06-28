@@ -3,6 +3,7 @@ package org.example.freelance.Service;
 import org.example.freelance.pojo.Chat;
 import org.example.freelance.pojo.Result;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface ChatsService {
@@ -15,4 +16,6 @@ public interface ChatsService {
     void insertChat(Chat chat);
 
     List<Chat> getChat(String openid, String channel);
+
+    HashMap<String, Object> getAllChat();
 }
