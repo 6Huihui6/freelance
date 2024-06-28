@@ -1,19 +1,11 @@
 package org.example.freelance.Service.Impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.example.freelance.Mapper.AdminMapper;
-import org.example.freelance.Mapper.UsersMapper;
+import org.example.freelance.mapper.AdminMapper;
 import org.example.freelance.Service.AdminService;
-import org.example.freelance.Service.UsersService;
-import org.example.freelance.exception.AccountNotFoundException;
-import org.example.freelance.exception.PasswordErrorException;
 import org.example.freelance.pojo.*;
 import org.example.freelance.pojo.DTO.*;
-import org.example.freelance.properties.WeChatProperties;
-import org.example.freelance.utils.HttpClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

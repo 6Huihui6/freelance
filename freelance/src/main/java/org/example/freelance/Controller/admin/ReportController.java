@@ -3,15 +3,8 @@ package org.example.freelance.Controller.admin;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.example.freelance.Mapper.UsersMapper;
-import org.example.freelance.Service.AdminService;
+import org.example.freelance.mapper.UsersMapper;
 import org.example.freelance.Service.ReportService;
-import org.example.freelance.pojo.Admin;
-import org.example.freelance.pojo.DTO.AdminDTO;
-import org.example.freelance.pojo.DTO.CompanyPageQueryDTO;
-import org.example.freelance.pojo.DTO.TaskPageQueryDTO;
-import org.example.freelance.pojo.DTO.UserPageQueryDTO;
-import org.example.freelance.pojo.PageResult;
 import org.example.freelance.pojo.Result;
 import org.example.freelance.pojo.VO.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +27,7 @@ public class ReportController {
     @Autowired
     private UsersMapper usersMapper;
 
-        @GetMapping("/userStatistics")
+    @GetMapping("/userStatistics")
     @ApiOperation("用户统计")
     public Result<UserReportVO> userStatistics(
             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,

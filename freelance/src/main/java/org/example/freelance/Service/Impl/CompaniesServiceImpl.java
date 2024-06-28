@@ -1,7 +1,7 @@
 package org.example.freelance.Service.Impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.freelance.Mapper.CompaniesMapper;
+import org.example.freelance.mapper.CompaniesMapper;
 import org.example.freelance.Service.CompaniesService;
 import org.example.freelance.pojo.Company;
 import org.springframework.beans.factory.annotation.Autowired;

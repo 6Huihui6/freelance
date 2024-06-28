@@ -24,13 +24,13 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping("/login")
-    public Result<AdminVO> login(@RequestBody AdminDTO adminDTO){
-    adminDTO.setStauts("1");
-        System.out.println("------------------------------,{}"+adminDTO.toString());
+    public Result<AdminVO> login(@RequestBody AdminDTO adminDTO) {
+        adminDTO.setStauts("1");
+        System.out.println("------------------------------,{}" + adminDTO.toString());
 
-        Admin admin=adminService.login(adminDTO);
+        Admin admin = adminService.login(adminDTO);
 
-        AdminVO adminVO=AdminVO.builder()
+        AdminVO adminVO = AdminVO.builder()
                 .id(admin.getId())
                 .username(admin.getUsername())
                 .status(admin.getStatus())
@@ -38,30 +38,30 @@ public class AdminController {
                 .build();
 
         return Result.success(adminVO);
-}
+    }
 
 
     @GetMapping("/user/page")
     @ApiOperation("员工分页查询")
-    public  Result<PageResult>page(UserPageQueryDTO userPageQueryDTO){
+    public Result<PageResult> page(UserPageQueryDTO userPageQueryDTO) {
         log.info("员工分页查询：{}", userPageQueryDTO.toString());
-        PageResult pageResult =adminService.pageQuery(userPageQueryDTO);
+        PageResult pageResult = adminService.pageQuery(userPageQueryDTO);
         return Result.success(pageResult);
     }
 
     @GetMapping("/tasks/page")
     @ApiOperation("任务分页查询")
-    public  Result<PageResult>page(TaskPageQueryDTO taskPageQueryDTO){
+    public Result<PageResult> page(TaskPageQueryDTO taskPageQueryDTO) {
         log.info("任务分页查询：{}", taskPageQueryDTO.toString());
-        PageResult pageResult =adminService.taskPageQuery(taskPageQueryDTO);
+        PageResult pageResult = adminService.taskPageQuery(taskPageQueryDTO);
         return Result.success(pageResult);
     }
 
     @GetMapping("/companies/page")
     @ApiOperation("公司分页查询")
-    public  Result<PageResult>page(CompanyPageQueryDTO companyPageQueryDTO){
+    public Result<PageResult> page(CompanyPageQueryDTO companyPageQueryDTO) {
         log.info("公司分页查询：{}", companyPageQueryDTO.toString());
-        PageResult pageResult =adminService.companyPageQuery(companyPageQueryDTO);
+        PageResult pageResult = adminService.companyPageQuery(companyPageQueryDTO);
         return Result.success(pageResult);
     }
 
@@ -75,7 +75,7 @@ public class AdminController {
 
     @PostMapping("/save")
     @ApiOperation("新增管理员")
-    public  Result save(@RequestBody AdminDTO adminDTO){
+    public Result save(@RequestBody AdminDTO adminDTO) {
         log.info("新增员工：{}", adminDTO);
         adminService.save(adminDTO);
         return Result.success();
@@ -83,7 +83,7 @@ public class AdminController {
 
     @DeleteMapping("delete")
     @ApiOperation("删除员工")
-    public  Result delete(@RequestParam List<String> selectedIds){
+    public Result delete(@RequestParam List<String> selectedIds) {
         log.info("删除人物：{}", selectedIds);
         adminService.deleteBatch(selectedIds);
         return Result.success();
@@ -91,9 +91,9 @@ public class AdminController {
 
     @GetMapping("/admin/page")
     @ApiOperation("员工分页查询")
-    public  Result<PageResult>page(AdminPageQueryDTO adminPageQueryDTO){
+    public Result<PageResult> page(AdminPageQueryDTO adminPageQueryDTO) {
         log.info("员工分页查询：{}", adminPageQueryDTO.toString());
-        PageResult pageResult =adminService.adminPageQuery(adminPageQueryDTO);
+        PageResult pageResult = adminService.adminPageQuery(adminPageQueryDTO);
         return Result.success(pageResult);
     }
 

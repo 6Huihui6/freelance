@@ -1,11 +1,10 @@
 package org.example.freelance.Service.Impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.freelance.Mapper.TasksMapper;
+import org.example.freelance.mapper.TasksMapper;
 import org.example.freelance.Service.TasksService;
 import org.example.freelance.pojo.DTO.TaskDTO;
 import org.example.freelance.pojo.Task;
-import org.example.freelance.pojo.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
