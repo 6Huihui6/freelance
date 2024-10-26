@@ -17,14 +17,6 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
-
-#阿里云OSS
-aliyun:
-  oss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-secret: 4HySV82lHfq4LpGEpZwpb6JUFDe9by
-    access-key-id: LTAI5t9mXMycWhhj4CUmXvXa
-    bucket-name: webss-tliass
 #spring事务管理日志
 logging:
   level:
